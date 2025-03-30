@@ -107,3 +107,16 @@ body{
 .hide{ 
     display: none;
 }
+
+@media (max-width:800px) {
+    .mainbox{
+        width: 75%;
+    }
+    
+}
+@media (max-width:675px) {
+    .mainbox{
+        width: 90%;
+    }
+    
+}
