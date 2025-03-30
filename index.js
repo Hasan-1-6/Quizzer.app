@@ -15,12 +15,19 @@ btn.addEventListener('click', function(){
 })
 
 
-
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1)); // Random index from 0 to i
+        [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap elements
+    }
+    return arr;
+}
 
 async function fetchQuizQues() {
     try{
         const response  = await fetch('quiz.json')
         data = await response.json()
+        shuffleArray(data)
     }
     catch(error){
         console.error('Error fetching data :', error)
@@ -54,6 +61,7 @@ async function handleBtnClick(){
     }
     answered = false
     question.innerText = data[i].question
+    shuffleArray(data[i].options)
     optarray.forEach((element, counter) => {
         element.innerText = data[i].options[counter]
         element.classList.remove('optcorrect')
